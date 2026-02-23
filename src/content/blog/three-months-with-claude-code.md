@@ -107,6 +107,7 @@ But software that is only fast-drafted is like a novel that is only first-drafte
 
 
 The software developer of the AI age, I believe, must learn to oscillate deliberately between these two paces. Fast to explore, slow to consolidate. Fast to generate possibilities, slow to choose among them. 
+
 Calvino never got to deliver his lecture on *Consistency*, the sixth memo he was writing when he died. I sometimes wonder if that is the one we need most.
 
 
