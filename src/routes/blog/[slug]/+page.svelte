@@ -4,6 +4,8 @@
 	let { data } = $props();
 	const { content: PostContent, metadata } = data;
 
+	const siteUrl = 'https://stefanorapisarda.github.io/stefano_home';
+
 	let toc = $state([]);
 	let activeId = $state('');
 	let progress = $state(0);
@@ -74,6 +76,21 @@
 
 <svelte:head>
 	<title>{metadata.title} - Stefano Rapisarda</title>
+	<meta property="og:title" content={metadata.title} />
+	<meta property="og:description" content={metadata.subtitle} />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="{siteUrl}/blog/{metadata.slug}" />
+	{#if metadata.image}
+		<meta property="og:image" content="{siteUrl}{metadata.image}" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+	{/if}
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={metadata.title} />
+	<meta name="twitter:description" content={metadata.subtitle} />
+	{#if metadata.image}
+		<meta name="twitter:image" content="{siteUrl}{metadata.image}" />
+	{/if}
 </svelte:head>
 
 <!-- Progress bar -->

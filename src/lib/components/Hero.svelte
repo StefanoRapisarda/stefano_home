@@ -20,6 +20,7 @@
 			<a href="{base}/contact">Contact</a>
 		</nav>
 	</div>
+	<span class="hero-credit">NASA's Goddard Space Flight Center; background, ESA/Gaia/DPAC</span>
 </section>
 
 <style>
@@ -91,4 +92,12 @@
 		color: var(--hero-heading, white);
 	}
 
+	.hero-credit {
+		position: absolute;
+		bottom: 0.8rem;
+		right: 1rem;
+		font-size: 0.65rem;
+		color: rgba(255, 255, 255, 0.35);
+		z-index: 1;
+	}
 </style>
