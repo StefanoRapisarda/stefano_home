@@ -1,0 +1,113 @@
+/* ===== Color Palette ===== */
+:root {
+	--tan: #E0BE99;
+	--grey: #C1BEBC;
+	--almond: #D9C7B2;
+	--darkgrey: #6E6D69;
+	--black: #0B0F12;
+	--slategrey: #697780;
+	--battleshipgrey: #838788;
+
+	/* Semantic aliases — dark (default) */
+	--color-bg: #111518;
+	--color-bg-card: #1a1f24;
+	--color-text: #d4d2d0;
+	--color-text-heading: #ede6de;
+	--color-accent: var(--tan);
+	--color-accent-hover: #c9a57e;
+	--color-muted: #a09c98;
+	--color-border: #2e353c;
+	--hero-overlay-inner: rgba(11, 15, 18, 0.3);
+	--hero-overlay-outer: rgba(11, 15, 18, 0.7);
+	--hero-heading: white;
+	--hero-text: rgba(255, 255, 255, 0.85);
+	--hero-link: rgba(255, 255, 255, 0.75);
+	--hero-divider: rgba(255, 255, 255, 0.3);
+
+	--radius: 8px;
+
+	/* Spacing */
+	--section-padding: 5rem 0;
+	--container-max: 1140px;
+}
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* ===== Base ===== */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--color-text-heading);
+	line-height: 1.2;
+}
+
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--color-accent-hover);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* ===== Utilities ===== */
+.container {
+	max-width: var(--container-max);
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.section-title {
+	font-size: 1.1rem;
+	margin-bottom: 2.5rem;
+	color: var(--color-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-weight: 500;
+}
+
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--darkgrey);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--slategrey);
+}

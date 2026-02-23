@@ -1,0 +1,19 @@
+{
+  "name": "Stefano Rapisarda",
+  "short_name": "Stefano",
+  "icons": [
+    {
+      "src": "/stefano_home/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/stefano_home/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0B0F12",
+  "background_color": "#0B0F12",
+  "display": "standalone"
+}
