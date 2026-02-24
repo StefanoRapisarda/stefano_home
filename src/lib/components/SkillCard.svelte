@@ -47,6 +47,7 @@
 		height: 180px;
 		border-radius: 50%;
 		border: 1px solid rgba(224, 190, 153, 0.25);
+		background: var(--color-bg);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -56,15 +57,16 @@
 			0 0 8px 1px rgba(224, 190, 153, 0.08),
 			0 0 20px 2px rgba(224, 190, 153, 0.04),
 			inset 0 0 15px 2px rgba(0, 0, 0, 0.3);
-		transition: border-color 0.3s ease, box-shadow 0.3s ease;
+		transition: border-color 0.4s ease, box-shadow 0.4s ease;
 	}
 
 	.skill-circle.active {
-		border-color: rgba(224, 190, 153, 0.6);
+		border-color: rgba(224, 190, 153, 0.8);
 		box-shadow:
-			0 0 12px 2px rgba(224, 190, 153, 0.15),
-			0 0 30px 4px rgba(224, 190, 153, 0.08),
-			inset 0 0 15px 2px rgba(0, 0, 0, 0.3);
+			0 0 15px 4px rgba(224, 190, 153, 0.35),
+			0 0 40px 10px rgba(224, 190, 153, 0.15),
+			0 0 80px 20px rgba(224, 190, 153, 0.08),
+			inset 0 0 20px 3px rgba(0, 0, 0, 0.4);
 	}
 
 	.skill-icon {
@@ -106,6 +108,9 @@
 	.overlay.active {
 		opacity: 1;
 		transform: translate(-50%, -50%) scale(1);
+		box-shadow:
+			0 0 12px 2px rgba(224, 190, 153, 0.15),
+			0 0 30px 6px rgba(224, 190, 153, 0.08);
 	}
 
 	.overlay-title {

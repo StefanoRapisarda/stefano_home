@@ -356,6 +356,7 @@
 		height: 280px;
 		border-radius: 50%;
 		border: 1px solid rgba(224, 190, 153, 0.25);
+		background: var(--color-bg);
 		box-shadow:
 			0 0 8px 1px rgba(224, 190, 153, 0.08),
 			0 0 20px 2px rgba(224, 190, 153, 0.04),
@@ -364,6 +365,46 @@
 		align-items: center;
 		justify-content: center;
 		padding: 50px;
+		transition: box-shadow 0.4s ease, border-color 0.4s ease;
+	}
+
+	.pullquote-circle::before {
+		content: '';
+		position: absolute;
+		top: -3px;
+		left: -3px;
+		right: -3px;
+		bottom: -3px;
+		border-radius: 50%;
+		background: conic-gradient(
+			from 0deg,
+			transparent 0%,
+			transparent 60%,
+			rgba(224, 190, 153, 0.7) 75%,
+			rgba(224, 190, 153, 0.3) 85%,
+			transparent 95%
+		);
+		z-index: -1;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+		animation: orbit 3s linear infinite;
+	}
+
+	.pullquote-circle:hover::before {
+		opacity: 1;
+	}
+
+	.pullquote-circle:hover {
+		border-color: rgba(224, 190, 153, 0.5);
+		box-shadow:
+			0 0 20px 4px rgba(224, 190, 153, 0.15),
+			0 0 50px 10px rgba(224, 190, 153, 0.08),
+			inset 0 0 20px 3px rgba(0, 0, 0, 0.4);
+	}
+
+	@keyframes orbit {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
 	}
 
 	.pullquote-right {
