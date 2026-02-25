@@ -11,12 +11,39 @@
 	let progress = $state(0);
 	let showBackToTop = $state(false);
 	let articleEl;
-	let pullquoteTop = $state(0);
-	let pullquoteLeftTop = $state(0);
-	let pullquoteRight2Top = $state(0);
-	let pullquoteLeft2Top = $state(0);
-	let pullquoteRight3Top = $state(0);
-	let pullquoteLeft3Top = $state(0);
+
+	const pullquotes = [
+		{
+			trigger: 'I would like to tell myself',
+			text: '\u201CI would like to tell myself that the time spent dealing with that software has been a painful, and yet valuable experience, that let me understand how to code, that made me a better programmer or made me understand the algorithmic logic. For a little part, yes, but mostly not.\u201D',
+			side: 'right'
+		},
+		{
+			trigger: 'In about 15 minutes',
+			text: '\u201CIn about 15 minutes and some key pressing, Claude generated a fully functional webapp. Of course several features had not been implemented as intended, but still, the app worked. The following three months have been just... fun.\u201D',
+			side: 'left'
+		},
+		{
+			trigger: 'One thing was certain',
+			text: '\u201COne thing was certain, to use a clich\u00E9, the genie had left its bottle and there was no way to put it back. The second certain thing is that I could never compete with AI at software development. AI is already writing better software than I ever had, thousands of times faster.\u201D',
+			side: 'right'
+		},
+		{
+			trigger: 'The irony is beautiful',
+			text: '\u201CThe irony is beautiful: In the age of AI, the most important thing a programmer can write is not code, but prose.\u201D',
+			side: 'left'
+		},
+		{
+			trigger: 'This is a trajectory that should concern',
+			text: '\u201CThis is a trajectory that should concern anyone. In the near future, software may become so complex that only AI can edit the code, and at that point, you are no longer the owner of your project, you are its curator, dependent on a tool that you do not fully understand and cannot fully control.\u201D',
+			side: 'right'
+		},
+		{
+			trigger: 'must learn to oscillate deliberately',
+			text: '\u201CThe software developer of the AI age, I believe, must learn to oscillate deliberately between these two paces. Fast to explore, slow to consolidate. Fast to generate possibilities, slow to choose among them.\u201D',
+			side: 'left'
+		}
+	];
 
 	function formatDate(dateStr) {
 		return new Date(dateStr).toLocaleDateString('en-US', {
@@ -58,29 +85,29 @@
 		return () => observer.disconnect();
 	});
 
-	// Position pull quote circles next to target paragraphs
+	// Insert pull quote circles into the article flow so text wraps around them.
+	// Circles are placed a few paragraphs before the quoted text to avoid redundancy.
 	$effect(() => {
 		if (!articleEl) return;
-		const paragraphs = articleEl.querySelectorAll('p');
-		for (const p of paragraphs) {
-			if (p.textContent.includes('I would like to tell myself')) {
-				pullquoteTop = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
-			if (p.textContent.includes('In about 15 minutes')) {
-				pullquoteLeftTop = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
-			if (p.textContent.includes('One thing was certain')) {
-				pullquoteRight2Top = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
-			if (p.textContent.includes('The irony is beautiful')) {
-				pullquoteLeft2Top = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
-			if (p.textContent.includes('This is a trajectory that should concern')) {
-				pullquoteRight3Top = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
-			if (p.textContent.includes('must learn to oscillate deliberately')) {
-				pullquoteLeft3Top = p.offsetTop + p.offsetHeight / 2 - 140;
-			}
+
+		// Clean up previously injected circles
+		articleEl.querySelectorAll('.pullquote-circle').forEach((el) => el.remove());
+
+		const paragraphs = [...articleEl.querySelectorAll('p')];
+		const OFFSET = 1; // place circle this many paragraphs before the quote
+
+		for (const pq of pullquotes) {
+			const idx = paragraphs.findIndex((p) => p.textContent.includes(pq.trigger));
+			if (idx === -1) continue;
+
+			const insertIdx = Math.max(0, idx - OFFSET);
+			const circle = document.createElement('div');
+			circle.className = `pullquote-circle pullquote-${pq.side}`;
+			const textEl = document.createElement('p');
+			textEl.className = 'pullquote-text';
+			textEl.textContent = pq.text;
+			circle.appendChild(textEl);
+			paragraphs[insertIdx].before(circle);
 		}
 	});
 
@@ -203,26 +230,6 @@
 		<h1 class="post-title">{metadata.title}</h1>
 		<p class="post-subtitle">{metadata.subtitle}</p>
 	</header>
-
-	<!-- Pull quote circles (wide screens only) -->
-	<div class="pullquote-circle pullquote-right" style="top: {pullquoteTop}px">
-		<p class="pullquote-text">"I would like to tell myself that the time spent dealing with that software has been a painful, and yet valuable experience, that let me understand how to code, that made me a better programmer or made me understand the algorithmic logic. For a little part, yes, but mostly not."</p>
-	</div>
-	<div class="pullquote-circle pullquote-left" style="top: {pullquoteLeftTop}px">
-		<p class="pullquote-text">"In about 15 minutes and some key pressing, Claude generated a fully functional webapp. Of course several features had not been implemented as intended, but still, the app worked. The following three months have been just... fun."</p>
-	</div>
-	<div class="pullquote-circle pullquote-right" style="top: {pullquoteRight2Top}px">
-		<p class="pullquote-text">"One thing was certain, to use a cliché, the genie had left its bottle and there was no way to put it back. The second certain thing is that I could never compete with AI at software development. AI is already writing better software than I ever had, thousands of times faster."</p>
-	</div>
-	<div class="pullquote-circle pullquote-left" style="top: {pullquoteLeft2Top}px">
-		<p class="pullquote-text">"The irony is beautiful: In the age of AI, the most important thing a programmer can write is not code, but prose."</p>
-	</div>
-	<div class="pullquote-circle pullquote-right" style="top: {pullquoteRight3Top}px">
-		<p class="pullquote-text">"This is a trajectory that should concern anyone. In the near future, software may become so complex that only AI can edit the code, and at that point, you are no longer the owner of your project, you are its curator, dependent on a tool that you do not fully understand and cannot fully control."</p>
-	</div>
-	<div class="pullquote-circle pullquote-left" style="top: {pullquoteLeft3Top}px">
-		<p class="pullquote-text">"The software developer of the AI age, I believe, must learn to oscillate deliberately between these two paces. Fast to explore, slow to consolidate. Fast to generate possibilities, slow to choose among them."</p>
-	</div>
 
 	<article class="post-content" bind:this={articleEl}>
 		<PostContent />
@@ -380,12 +387,12 @@
 		line-height: 1.8;
 	}
 
-	/* Pull quote circles */
-	.pullquote-circle {
-		position: absolute;
-		width: 280px;
-		height: 280px;
+	/* Pull quote circles (injected into article flow) */
+	.post-content :global(.pullquote-circle) {
+		width: 380px;
+		height: 380px;
 		border-radius: 50%;
+		shape-outside: circle(50%) border-box;
 		border: 1px solid rgba(224, 190, 153, 0.25);
 		background: var(--color-bg);
 		box-shadow:
@@ -395,11 +402,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 50px;
+		padding: 55px;
+		position: relative;
 		transition: box-shadow 0.4s ease, border-color 0.4s ease;
 	}
 
-	.pullquote-circle::before {
+	.post-content :global(.pullquote-circle::before) {
 		content: '';
 		position: absolute;
 		top: -3px;
@@ -421,11 +429,11 @@
 		animation: orbit 3s linear infinite;
 	}
 
-	.pullquote-circle:hover::before {
+	.post-content :global(.pullquote-circle:hover::before) {
 		opacity: 1;
 	}
 
-	.pullquote-circle:hover {
+	.post-content :global(.pullquote-circle:hover) {
 		border-color: rgba(224, 190, 153, 0.5);
 		box-shadow:
 			0 0 20px 4px rgba(224, 190, 153, 0.15),
@@ -438,25 +446,35 @@
 		to { transform: rotate(360deg); }
 	}
 
-	.pullquote-right {
-		left: calc(100% + 2rem);
+	.post-content :global(.pullquote-right) {
+		float: right;
+		margin-left: 1.5rem;
+		margin-right: calc(100% / 3 - 380px);
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+		shape-margin: 1rem;
 	}
 
-	.pullquote-left {
-		right: calc(100% + 2rem);
+	.post-content :global(.pullquote-left) {
+		float: left;
+		margin-right: 1.5rem;
+		margin-left: calc(100% / 3 - 380px);
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+		shape-margin: 1rem;
 	}
 
-	.pullquote-text {
-		font-size: 0.72rem;
+	.post-content :global(.pullquote-text) {
+		font-size: 1rem;
 		font-style: italic;
 		color: var(--color-muted);
 		text-align: center;
-		line-height: 1.5;
+		line-height: 1.55;
 		margin: 0;
 	}
 
-	@media (max-width: 1300px) {
-		.pullquote-circle {
+	@media (max-width: 900px) {
+		.post-content :global(.pullquote-circle) {
 			display: none;
 		}
 	}
@@ -535,6 +553,7 @@
 	/* Markdown content */
 	.post-content {
 		font-size: 1.05rem;
+		overflow: visible;
 	}
 
 	.post-content :global(h1) {
