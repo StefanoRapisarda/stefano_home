@@ -1,5 +1,14 @@
 <svelte:head>
 	<title>About - Stefano Rapisarda</title>
+	<meta name="description" content="About Stefano Rapisarda — researcher, software developer, and data scientist working at the intersection of data modeling, open science, and scientific computing." />
+	<link rel="canonical" href="https://stefanorapisarda.github.io/stefano_home/about" />
+	<meta property="og:title" content="About - Stefano Rapisarda" />
+	<meta property="og:description" content="About Stefano Rapisarda — researcher, software developer, and data scientist working at the intersection of data modeling, open science, and scientific computing." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stefanorapisarda.github.io/stefano_home/about" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="About - Stefano Rapisarda" />
+	<meta name="twitter:description" content="About Stefano Rapisarda — researcher, software developer, and data scientist." />
 </svelte:head>
 
 <div class="page-content">

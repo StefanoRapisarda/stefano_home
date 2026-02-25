@@ -1,5 +1,14 @@
 <svelte:head>
 	<title>CV - Stefano Rapisarda</title>
+	<meta name="description" content="Curriculum vitae of Stefano Rapisarda — PhD, database coordinator at Karolinska Institutet and SciLifeLab, with experience in data science, OMOP CDM, FAIR principles, and astrophysics research." />
+	<link rel="canonical" href="https://stefanorapisarda.github.io/stefano_home/cv" />
+	<meta property="og:title" content="CV - Stefano Rapisarda" />
+	<meta property="og:description" content="Curriculum vitae of Stefano Rapisarda — PhD, database coordinator at Karolinska Institutet and SciLifeLab." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stefanorapisarda.github.io/stefano_home/cv" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="CV - Stefano Rapisarda" />
+	<meta name="twitter:description" content="Curriculum vitae of Stefano Rapisarda — PhD, database coordinator at Karolinska Institutet and SciLifeLab." />
 </svelte:head>
 
 <div class="page-content">

@@ -1,5 +1,14 @@
 <svelte:head>
 	<title>Contact - Stefano Rapisarda</title>
+	<meta name="description" content="Get in touch with Stefano Rapisarda. Contact via email, GitHub, LinkedIn, ORCID, SciLifeLab, or ResearchGate." />
+	<link rel="canonical" href="https://stefanorapisarda.github.io/stefano_home/contact" />
+	<meta property="og:title" content="Contact - Stefano Rapisarda" />
+	<meta property="og:description" content="Get in touch with Stefano Rapisarda. Contact via email, GitHub, LinkedIn, ORCID, SciLifeLab, or ResearchGate." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stefanorapisarda.github.io/stefano_home/contact" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Contact - Stefano Rapisarda" />
+	<meta name="twitter:description" content="Get in touch with Stefano Rapisarda." />
 </svelte:head>
 
 <div class="page-content">

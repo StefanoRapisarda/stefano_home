@@ -108,10 +108,18 @@
 
 <svelte:head>
 	<title>{metadata.title} - Stefano Rapisarda</title>
+	<meta name="description" content={metadata.subtitle} />
+	<link rel="canonical" href="{siteUrl}/blog/{metadata.slug}" />
 	<meta property="og:title" content={metadata.title} />
 	<meta property="og:description" content={metadata.subtitle} />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="{siteUrl}/blog/{metadata.slug}" />
+	<meta property="og:site_name" content="Stefano Rapisarda" />
+	<meta property="article:published_time" content={new Date(metadata.date).toISOString()} />
+	<meta property="article:author" content="Stefano Rapisarda" />
+	{#if metadata.category}
+		<meta property="article:section" content={metadata.category} />
+	{/if}
 	{#if metadata.image}
 		<meta property="og:image" content="{siteUrl}{metadata.image}" />
 		<meta property="og:image:width" content="1200" />
@@ -123,6 +131,29 @@
 	{#if metadata.image}
 		<meta name="twitter:image" content="{siteUrl}{metadata.image}" />
 	{/if}
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": metadata.title,
+		"description": metadata.subtitle,
+		"datePublished": new Date(metadata.date).toISOString(),
+		"author": {
+			"@type": "Person",
+			"name": "Stefano Rapisarda",
+			"url": "https://stefanorapisarda.github.io/stefano_home/"
+		},
+		"publisher": {
+			"@type": "Person",
+			"name": "Stefano Rapisarda"
+		},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": `${siteUrl}/blog/${metadata.slug}`
+		},
+		...(metadata.image ? { "image": `${siteUrl}${metadata.image}` } : {}),
+		"articleSection": metadata.category,
+		"inLanguage": "en"
+	})}</script>`}
 </svelte:head>
 
 <!-- Progress bar -->

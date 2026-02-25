@@ -14,6 +14,15 @@
 
 <svelte:head>
 	<title>Blog - Stefano Rapisarda</title>
+	<meta name="description" content="Reflections at the intersection of data, code, science, and the questions that keep me up at night. Articles by Stefano Rapisarda." />
+	<link rel="canonical" href="https://stefanorapisarda.github.io/stefano_home/blog" />
+	<meta property="og:title" content="Blog - Stefano Rapisarda" />
+	<meta property="og:description" content="Reflections at the intersection of data, code, science, and the questions that keep me up at night." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stefanorapisarda.github.io/stefano_home/blog" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Blog - Stefano Rapisarda" />
+	<meta name="twitter:description" content="Reflections at the intersection of data, code, science, and the questions that keep me up at night." />
 </svelte:head>
 
 <div class="blog-listing">

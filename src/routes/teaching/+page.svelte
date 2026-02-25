@@ -79,6 +79,15 @@
 
 <svelte:head>
 	<title>Teaching - Stefano Rapisarda</title>
+	<meta name="description" content="Teaching portfolio of Stefano Rapisarda — workshops and courses on Python, R, text mining, generative AI, FAIR data, and cultural data analysis." />
+	<link rel="canonical" href="https://stefanorapisarda.github.io/stefano_home/teaching" />
+	<meta property="og:title" content="Teaching - Stefano Rapisarda" />
+	<meta property="og:description" content="Teaching portfolio of Stefano Rapisarda — workshops and courses on Python, R, text mining, generative AI, FAIR data, and cultural data analysis." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stefanorapisarda.github.io/stefano_home/teaching" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Teaching - Stefano Rapisarda" />
+	<meta name="twitter:description" content="Teaching portfolio of Stefano Rapisarda — workshops and courses on data science and research skills." />
 </svelte:head>
 
 <div class="page-content">
