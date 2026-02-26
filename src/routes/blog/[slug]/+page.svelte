@@ -208,7 +208,10 @@
 {/if}
 
 <div class="blog-post">
-	<a href="{base}/blog" class="back-link">&larr; Notebook</a>
+	<div class="top-nav">
+		<a href="{base}/blog" class="back-link">&larr; Notebook</a>
+		<a href="{base}/" class="back-link">Home</a>
+	</div>
 
 	{#if metadata.image}
 		<figure class="hero-image">
@@ -687,6 +690,12 @@
 		color: var(--color-muted);
 		font-style: italic;
 		margin-top: 0.5rem;
+	}
+
+	.top-nav {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
 	}
 
 	.post-footer {
